@@ -1,15 +1,7 @@
-import './App.css'
-import { InputForm } from './components/dailyInputForm'
+import { Chatbot } from './components/Chatbot'
 
 function App() {
-  // const [count, setCount] = useState(0)
-  
-
-  return (
-    <>
-      <InputForm/>
-    </>
-  )
+  return <Chatbot />
 }
 
 export default App

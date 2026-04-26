@@ -1,0 +1,29 @@
+{
+  "name": "Bloom",
+  "age": 25,
+  "last_period_date": "2026-04-10",
+  "average_cycle_length": 28,
+  "average_period_length": 5,
+  "daily_data": [
+    {
+      "date": "2026-04-30",
+      "food_intake": ["rice", "dal", "tea"],
+      "sleep_hours": 6.5,
+      "stress_level": 3,
+      "nutrients": {
+        "carbs_g": 0,
+        "protein_g": 0,
+        "fats_g": 0,
+        "free_sugar_g": 0,
+        "fibre_g": 0,
+        "sodium_mg": 0,
+        "calcium_mg": 0,
+        "iron_mg": 0,
+        "vitamin_c_mg": 0,
+        "folate_ug": 0
+      },
+      "mood_note": "Feeling tired but okay",
+      "symptoms": ["cramps", "low energy"]
+    }
+  ]
+}

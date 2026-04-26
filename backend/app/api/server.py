@@ -1,6 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from pydantic import BaseModel
+
 from backend.app.mcp_server.models.nutrition_calculator import food_list
+from backend.app.utils.rag_store import hybrid_search, ingest_text
 
 
 #Define the calculate input
@@ -10,6 +12,12 @@ class calculateInput(BaseModel):
     sleep_hours: str
     water_intake: str
     stress_level: int
+
+
+class SearchRequest(BaseModel):
+    query: str
+    top_k: int = 5
+
 
 app = FastAPI()
 
@@ -37,3 +45,22 @@ def calculate(data: calculateInput):
 def rag_ask(data: str):
     return "ans"
 
+@app.post("/ingest-txt")
+async def ingest_txt(file: UploadFile = File(...)):
+    if not file.filename or not file.filename.endswith(".txt"):
+        return {"error": "Only .txt files are supported"}
+
+    content = await file.read()
+    text = content.decode("utf-8")
+
+    return ingest_text(file.filename, text)
+
+
+@app.post("/search")
+def search(request: SearchRequest):
+    results = hybrid_search(request.query, request.top_k)
+
+    return {
+        "query": request.query,
+        "results": results,
+    }
