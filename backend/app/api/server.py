@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from backend.app.models.nutrition_calculator import food_list
 
 
 #Define the calculate input
 class calculateInput(BaseModel):
     last_period_date: str
-    food_intake: list[str]
+    food_intake: food_list
     sleep_hours: str
     water_intake: str
     stress_level: int
