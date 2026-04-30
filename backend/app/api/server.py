@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from backend.app.models.nutrition_calculator import food_list
+from backend.app.mcp_server.models.nutrition_calculator import food_list
 
 
 #Define the calculate input
@@ -32,3 +32,8 @@ def calculate(data: calculateInput):
     # we need to take the last_period_date and give it to cycle_prediction.py to get the next period date.
     
     return data
+
+@app.post("/ask")
+def rag_ask(data: str):
+    return "ans"
+
